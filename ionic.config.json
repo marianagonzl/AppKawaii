@@ -1,0 +1,7 @@
+{
+  "name": "AppKawaii",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -7,12 +7,12 @@ import { initializeApp } from "firebase/app";
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyD-aQmTylwIHZZ0ccfD_vodn3b6FbL7dPw",
-    authDomain: "ea18-efefb.firebaseapp.com",
-    projectId: "ea18-efefb",
-    storageBucket: "ea18-efefb.firebasestorage.app",
-    messagingSenderId: "400226741062",
-    appId: "1:400226741062:web:cf7cb9f7b4330728d65347"
+    apiKey: "AIzaSyCHn-9RXoI8MByCxRlnI5z5QoEBkFDFGPw",
+  authDomain: "appcumple-5d4bc.firebaseapp.com",
+  projectId: "appcumple-5d4bc",
+  storageBucket: "appcumple-5d4bc.firebasestorage.app",
+  messagingSenderId: "691464392377",
+  appId: "1:691464392377:web:151d6c7f8d7d86f7b15568"
   },
 
 };

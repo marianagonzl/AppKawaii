@@ -1,27 +1,30 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Song list</ion-title>
-    <ion-button (click)="logout()">
-      <ion-icon name="log-out-outline"></ion-icon>Log Out
-    </ion-button>
+    <ion-title>
+      Kawaii-Team
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>s
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  
+  <ion-item>
+    <ion-input [(ngModel)]="marketItem" placeholder="Apples, Cookies, etc."></ion-input>
+    <ion-button (click)="addSong()" color="primary">
+      {{ editingItemId ? 'Actualizar' : 'Agregar' }}
+    </ion-button>
+  </ion-item>
+
   <ion-list>
-    <ion-item *ngFor="let song of songs$ | async">
-      <ion-label>{{ song.title }}</ion-label>
-      <ion-button fill="clear" color="primary" (click)="editSong(song)">Edit
-        <ion-icon name="create"></ion-icon>
-      </ion-button>
-      <ion-button fill="clear" color="danger" (click)="song.id ? deleteSong(song.id) : null">Delete
-        <ion-icon name="trash"></ion-icon>
-      </ion-button>      
+    <ion-item *ngFor="let item of items$ | async">
+
+      <ion-label>{{ item.title }}</ion-label>
+
+      <ion-button (click)="editItem(item)" color="warning">Edit</ion-button>
+      <ion-button (click)="deleteSong(item.id!)" color="danger">Delete</ion-button>
     </ion-item>
   </ion-list>
-
-  <ion-item>
-    <ion-input [(ngModel)]="songText" placeholder="Nueva canción"></ion-input>
-    <ion-button (click)="addSong()">{{ editingSongId ? 'Update' : 'Add' }}</ion-button>
-  </ion-item>
 </ion-content>

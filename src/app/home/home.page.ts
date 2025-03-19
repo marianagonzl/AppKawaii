@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { songsService, Song } from '../songs.service'; 
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service'; 
 import { Router } from '@angular/router';
+import { ItemService , Item } from '../item.service';
 
 @Component({
   selector: 'app-home',
@@ -15,40 +15,41 @@ import { Router } from '@angular/router';
   imports: [IonicModule, CommonModule, FormsModule],
 })
 export class HomePage implements OnInit {
-  songText = ''; 
-  songs$: Observable<Song[]> = new Observable(); // Cambiar a Observable para Firestore
-  editingSongId: string | null = null; 
+  itemText = ''; 
+  marketItem = '';
+  items$: Observable<Item[]> = new Observable(); // Cambiar a Observable para Firestore
+  editingItemId: string | null = null; 
 
-  constructor(private songService: songsService, private authService: AuthService, private router: Router) {} 
+  constructor(private itemService: ItemService, private authService: AuthService, private router: Router) {} 
 
   ngOnInit() {
-    this.songs$ = this.songService.getSongs(); // Obtener tareas desde Firestore
+    this.items$ = this.itemService.getItems(); // Obtener tareas desde Firestore
   }
 
   addSong() {
-    if (this.songText.trim()) {
-      const newSong: Song = { title: this.songText, done: false };
+    if (this.itemText.trim()) {
+      const newItem: Item = { title: this.itemText, done: false };
 
-      if (this.editingSongId) {
-        this.songService.updateSong(this.editingSongId, { title: this.songText }).then(() => {
-          this.editingSongId = null; 
-          this.songText = '';
+      if (this.editingItemId) {
+        this.itemService.updateItem(this.editingItemId, { title: this.itemText }).then(() => {
+          this.editingItemId = null; 
+          this.itemText = '';
         });
       } else {
-        this.songService.addSong(newSong).then(() => {
-          this.songText = '';
+        this.itemService.addItem(newItem).then(() => {
+          this.itemText = '';
         });
       }
     }
   }
 
-  editSong(song: Song) {
-    this.songText = song.title;
-    this.editingSongId = song.id || null;
+  editItem(item: Item) {
+    this.itemText = item.title;
+    this.editingItemId = item.id || null;
   }
 
-  deleteSong(songId: string) {
-    this.songService.deleteSong(songId);
+  deleteSong(itemId: string) {
+    this.itemService.deleteItem(itemId);
   }
 
   async logout() {
@@ -60,4 +61,8 @@ export class HomePage implements OnInit {
       console.error('Error al cerrar sesión:', error);
     }
   }
+  addItem() {
+    this.addSong(); // Reusa tu lógica
+  }
+  
 }

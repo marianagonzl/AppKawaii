@@ -1,18 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Kawaii-Team
+      Cumpleaños kawaii 
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="logout()">Logout</ion-button>
-    </ion-buttons>s
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   
   <ion-item>
-    <ion-input [(ngModel)]="marketItem" placeholder="Apples, Cookies, etc."></ion-input>
+    <ion-input [(ngModel)]="itemText" placeholder="Agrega el cumpleaños de una persona kawaii."></ion-input>
     <ion-button (click)="addSong()" color="primary">
       {{ editingItemId ? 'Actualizar' : 'Agregar' }}
     </ion-button>

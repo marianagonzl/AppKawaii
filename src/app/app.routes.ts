@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { HomePage } from './home/home.page';
+import { SignupPage } from './sign-up/sign-up.page';
+
 
 export const routes: Routes = [
   {
@@ -20,7 +23,7 @@ export const routes: Routes = [
   },
   {
     path: 'sign-up',
-    loadChildren: () => import('./sign-up/sign-up.page').then(m => m.SignupPage)
+    loadComponent: () => import('./sign-up/sign-up.page').then(m => m.SignupPage)
 
   },
 ];

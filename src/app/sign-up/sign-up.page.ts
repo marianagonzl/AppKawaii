@@ -10,8 +10,8 @@ import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.page.html',
-  styleUrls: ['./signup.page.scss'],
+  templateUrl: './sign-up.page.html',
+  styleUrls: ['./sign-up.page.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })

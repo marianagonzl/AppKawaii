@@ -27,6 +27,7 @@ export class HomePage implements OnInit {
   }
 
   addSong() {
+    console.log('Agregando canción:', this.itemText);
     if (this.itemText.trim()) {
       const newItem: Item = { title: this.itemText, done: false };
 
